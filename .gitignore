@@ -1,0 +1,17 @@
+#################
+## IntelliJ
+#################
+.idea
+*.iml
+
+
+# Mac crap
+.DS_Store
+
+# Maven
+**/target/**
+
+# Gradle
+**/.gradle/**
+out
+build
