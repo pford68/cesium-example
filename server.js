@@ -6,7 +6,7 @@ var express = require("express"),
 app.configure(function(){
     app.use(express.methodOverride());
     app.use(express.bodyParser());
-    app.use(express.static(__dirname + "/src/"));
+    app.use("/cesium-test", express.static(__dirname + "/src/"));
     app.use(app.router);
 });
 
