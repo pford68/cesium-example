@@ -1,10 +1,134 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<html lang="en">
+<head>
+    <title>Hello World!</title>
+    <script src="lib/Cesium/Cesium.js"></script>
+    <style>
+        @import url(lib/Cesium/Widgets/CesiumWidget/CesiumWidget.css);
+        #cesiumContainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 75%;
+            width: 75%;
+            margin: 0;
+            overflow: hidden;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #ent-main-canvas {
+            height: 100%;
+            width: 100%;
+            background-color: silver;
+        }
+    </style>
 </head>
 <body>
+<canvas id="ent-main-canvas"></canvas>
+<div id="cesiumContainer"></div>
+<script>
+    function addPointBillboards(scene, ellipsoid) {
+        var canvas = document.createElement('canvas');
+        canvas.width = 16;
+        canvas.height = 16;
+        var context2D = canvas.getContext('2d');
+        context2D.beginPath();
+        context2D.arc(8, 8, 8, 0, Cesium.Math.TWO_PI, true);
+        context2D.closePath();
+        context2D.fillStyle = 'rgb(255, 255, 255)';
+        context2D.fill();
 
+        var billboards = new Cesium.BillboardCollection();
+        var textureAtlas = scene.context.createTextureAtlas({
+            image : canvas
+        });
+        billboards.textureAtlas = textureAtlas;
+
+        billboards.add({
+            position : ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-75.59777, 40.03883)),
+            color : Cesium.Color.RED,
+            scale : 0.5,
+            imageIndex : 0
+        });
+
+        billboards.add({
+            position : ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-80.50, 35.14)),
+            color : Cesium.Color.BLUE,
+            imageIndex : 0
+        });
+
+        billboards.add({
+            position : ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-80.12, 25.46)),
+            color : Cesium.Color.LIME,
+            scale : 2,
+            imageIndex : 0
+        });
+
+        scene.primitives.add(billboards);
+    }
+
+
+    function addMarkerBillboards(scene, ellipsoid) {
+        var image = new Image();
+        image.onload = function() {
+            var billboards = new Cesium.BillboardCollection();
+
+            billboards.textureAtlas = scene.context.createTextureAtlas({
+                borderWidthInPixels : 0,
+                image: image
+            });
+
+            billboards.add({
+                position : ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-75.59777, 40.03883)),
+                scale : 1,
+                imageIndex: 0,  // PF:  Even if there are no subregions in the textureAtlas (see addMarkerBillboardsFromSprite), imageIndex is necessary for the image to display.
+                color : Cesium.Color.LIME
+            });
+            billboards.add({
+                position : ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-84.0, 39.0)),
+                scale : 1,
+                imageIndex: 0,
+                color : new Cesium.Color(0, 0.5, 1.0, 1.0)
+            });
+            billboards.add({
+                position : ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-70.0, 41.0)),
+                scale : 1,
+                imageIndex: 0,
+                color : new Cesium.Color(0.5, 0.9, 1.0, 1.0)
+            });
+            billboards.add({
+                position : ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-73.0, 37.0)),
+                scale : 1,
+                imageIndex: 0,
+                color : Cesium.Color.RED
+            });
+            billboards.add({
+                position : ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-79.0, 35.0)),
+                scale : 1,
+                imageIndex: 0,
+                color : Cesium.Color.YELLOW
+            });
+            scene.primitives.add(billboards);
+        };
+        image.src = 'images/Maserati-128.png';
+    }
+
+
+    var widget = new Cesium.CesiumWidget('cesiumContainer');
+
+    var ellipsoid = widget.centralBody.ellipsoid;
+    var scene = widget.scene;
+    var primitives = scene.primitives;
+
+    primitives.removeAll();
+    addMarkerBillboards(scene, ellipsoid);
+</script>
 </body>
 </html>

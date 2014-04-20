@@ -1,12 +1,13 @@
 {
-  "name": "cesium-test",
-  "version": "0.1.0",
-  "devDependencies": {
-    "grunt": "^0.4.4",
-    "grunt-contrib-jshint": "~0.6.3",
-    "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-war": "^0.2.7",
-    "grunt-zip": "^0.10.2"
-  }
+    "name": "cesium-example",
+    "version": "0.1.0",
+    "devDependencies": {
+        "grunt": "^0.4.4",
+        "grunt-contrib-jshint": "~0.6.3",
+        "grunt-contrib-nodeunit": "~0.2.0",
+        "grunt-contrib-uglify": "~0.2.2",
+        "grunt-contrib-sass": "^0.7.3",
+        "grunt-contrib-watch": "^0.6.1"
+    }
 }
+
