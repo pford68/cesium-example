@@ -42,5 +42,5 @@ module.exports = function(grunt){
     grunt.registerTask('server', 'Starts the development server.', function() {
         server.start(grunt.config("server.port"));
     });
-    grunt.registerTask('default', ['server', 'sass', 'watch'])
+    grunt.registerTask('default', ['server', 'sass', 'watch']);
 };
