@@ -1,0 +1,31 @@
+{
+  "name": "cesium-example",
+  "version": "0.0.1",
+  "homepage": "https://github.com/pford68/cesium-example",
+  "authors": [
+    "Philip Ford <paf1687@gmail.com>"
+  ],
+  "description": "A small working cesium example",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "keywords": [
+    "cesium"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.11",
+    "d3": "~3.4.5",
+    "jquery": "~2.1.0",
+    "cesium": "*"
+  }
+}
