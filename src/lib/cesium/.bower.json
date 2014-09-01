@@ -1,0 +1,14 @@
+{
+  "name": "cesium",
+  "homepage": "https://github.com/AnalyticalGraphicsInc/cesium",
+  "_release": "bca957a299",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "bca957a299bdd95c0973deb5b13ce21d9d3bc395"
+  },
+  "_source": "git://github.com/AnalyticalGraphicsInc/cesium.git",
+  "_target": "*",
+  "_originalSource": "cesium",
+  "_direct": true
+}
